@@ -52,10 +52,65 @@ const { Content } = await post.render();
     .navigation {
         display: flex;
         align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+        padding: 0.75rem;
+        min-height: 44px;
+    }
 
-        .rotate {
-            transform: translate(0, 0) rotate(-180deg) skewX(0) skewY(0)
-                scaleX(1) scaleY(1);
+    .rotate {
+        transform: rotate(180deg);
+    }
+
+    .post-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 3rem 0 2rem 0;
+        gap: 1rem;
+    }
+
+    .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem;
+        min-height: 44px;
+        flex: 1;
+        text-decoration: none;
+    }
+
+    .nav-link.prev {
+        justify-content: flex-start;
+    }
+
+    .nav-link.next {
+        justify-content: flex-end;
+    }
+
+    /* Mobile responsive styles */
+    @media (max-width: 768px) {
+        .navigation {
+            margin-bottom: 1.5rem;
+            padding: 0.5rem;
+        }
+
+        .post-navigation {
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0 1.5rem 0;
+        }
+
+        .nav-link {
+            width: 100%;
+            justify-content: center;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .nav-link.prev,
+        .nav-link.next {
+            justify-content: center;
         }
     }
 </style>
@@ -67,32 +122,28 @@ const { Content } = await post.render();
     structuredData={structuredData}
 >
     <a href="/" class="navigation">
-        <Icon name="arrow-back" size={40} class="rotate" />
+        <Icon name="arrow-back" size={24} class="rotate" />
         <span>Home</span>
     </a>
     <article>
         <Content />
     </article>
 
-    <section>
+    <section class="post-navigation">
         {
             prev && (
-                <div>
-                    <a href={`/writings/${prev.slug}`}>
-                        <Icon name="arrow-back" size={40} />
-                        <span>{prev.data.title}</span>
-                    </a>
-                </div>
+                <a href={`/writings/${prev.slug}`} class="nav-link prev">
+                    <Icon name="arrow-back" size={24} />
+                    <span>{prev.data.title}</span>
+                </a>
             )
         }
         {
             next && (
-                <div>
-                    <a href={`/writings/${next.slug}`}>
-                        <span>{next.data.title}</span>
-                        <Icon name="arrow-back" size={40} />
-                    </a>
-                </div>
+                <a href={`/writings/${next.slug}`} class="nav-link next">
+                    <span>{next.data.title}</span>
+                    <Icon name="arrow-back" size={24} class="rotate" />
+                </a>
             )
         }
     </section>

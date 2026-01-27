@@ -33,6 +33,7 @@ body {
 main {
     max-width: 64rem;
     margin: 2rem auto;
+    padding: 0 1rem;
 }
 
 a {
@@ -137,3 +138,86 @@ article p > code {
 /*article .btn__copy-code {
     @apply absolute top-4 right-12 shadow-lg px-2 py-1 rounded-md text-customLightGrey;
 }*/
+
+@media (max-width: 768px) {
+    main {
+        margin: 1rem auto;
+        padding: 0 1.5rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    section {
+        margin: 2rem auto;
+    }
+
+    section .title {
+        font-size: 1.5rem;
+    }
+
+    article h1 {
+        font-size: 2rem;
+    }
+
+    article h2 {
+        font-size: 1.5rem;
+    }
+
+    .list-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .list-item .date {
+        align-self: flex-start;
+        margin-top: 0.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        padding: 0 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        margin-bottom: 1rem;
+    }
+
+    section .title {
+        font-size: 1.25rem;
+    }
+
+    article h1 {
+        font-size: 1.75rem;
+    }
+
+    article h2 {
+        font-size: 1.25rem;
+    }
+
+    article pre {
+        margin: 1rem 0;
+        padding: 1rem 0.75rem;
+        overflow-x: auto;
+    }
+
+    article p > code {
+        padding: 0.125rem 0.25rem;
+        font-size: 0.875rem;
+    }
+}
