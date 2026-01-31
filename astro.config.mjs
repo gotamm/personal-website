@@ -6,4 +6,7 @@ import icon from "astro-icon";
 export default defineConfig({
   site: "https://matteogobbo.it",
   integrations: [icon(), sitemap()],
+  server: {
+    port: 3000,
+  },
 });

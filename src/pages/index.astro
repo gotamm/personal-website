@@ -5,6 +5,7 @@ import { formatDate } from "../utils/date";
 import Socials from "../components/Socials.astro";
 import { getGithubPullRequests } from "../api/github";
 import { extractRepositoryUrl, extractRepositoryName } from "../utils/github";
+import { getTalks } from "../api/talks";
 
 const blogEntries = await getCollection("blog");
 
@@ -17,6 +18,8 @@ const publishedBlogPosts = blogEntries
     });
 
 const ossContributions = await getGithubPullRequests();
+
+const talks = getTalks();
 ---
 
 <style>
@@ -41,11 +44,11 @@ const ossContributions = await getGithubPullRequests();
                 target="_blank"
                 rel="noreferrer"
                 href="https://www.kleecks.com/">Kleecks</a
-            >, a SaaS company specializing in helping businesses optimize their
-            websites across multiple areas, including SEO, UX, performance, and
-            content. <br />I started my career as a freelance consultant,
-            working across different projects and domains and gaining experience
-            in fast-paced environments. I later joined <a
+            >, a SaaS company specialized in performance marketing and helping
+            businesses optimize their websites across multiple areas, including
+            SEO, UX, performance, and content. <br />I started my career as a
+            freelance consultant, working across different projects and domains
+            and gaining experience in fast-paced environments. I later joined <a
                 target="_blank"
                 rel="noreferrer"
                 href="https://www.conio.com/">Conio</a
@@ -112,7 +115,25 @@ const ossContributions = await getGithubPullRequests();
         </div>
     </section>
     <section>
-        <h5 class="title">Contacts</h5>
+        <h5 class="title">Talks</h5>
+        <ul>
+            {
+                talks.map((t) => (
+                    <li class="list-item">
+                        <div class="detail">
+                            <a target="_blank" rel="noreferrer" href={t.link}>
+                                {t.title}: {t.subTitle}
+                            </a>
+                            <span class="sub-title">{t.event}</span>
+                        </div>
+                        <span class="date">{formatDate(t.date)}</span>
+                    </li>
+                ))
+            }
+        </ul>
+    </section>
+    <section>
+        <h6 class="title">Contacts</h6>
         <Socials />
     </section>
 </Layout>
