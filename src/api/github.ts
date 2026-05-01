@@ -20,7 +20,7 @@ const githubResponseSchema = z.object({
 
 export const getGithubPullRequests = async () => {
   const response = await fetch(
-    "https://api.github.com/search/issues?q=author:matteo-gobbo+type:pr&sort=asc",
+    "https://api.github.com/search/issues?q=author:gotamm+type:pr&sort=asc",
   );
   const responseData = await response.json();
 
