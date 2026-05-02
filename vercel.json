@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "Link",
-          "value": "</sitemap-index.xml>; rel=\"sitemap\""
+          "value": "</sitemap-index.xml>; rel=\"sitemap\", </index.md>; rel=\"alternate\"; type=\"text/markdown\""
         }
       ]
     }
