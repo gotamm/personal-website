@@ -9,9 +9,10 @@ interface Props {
     description: string;
     canonicalURL: URL;
     structuredData: unknown;
+    slug: string;
 }
 
-const { title, description, canonicalURL, structuredData } = Astro.props;
+const { title, description, canonicalURL, structuredData, slug } = Astro.props;
 ---
 
 <!doctype html>
@@ -22,6 +23,7 @@ const { title, description, canonicalURL, structuredData } = Astro.props;
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="sitemap" href="/sitemap-index.xml" />
+        <link rel="alternate" type="text/markdown" href={`/writings/${slug}.md`} />
         <meta name="generator" content={Astro.generator} />
         <link rel="canonical" href={canonicalURL} />
         <title>{title}</title>
